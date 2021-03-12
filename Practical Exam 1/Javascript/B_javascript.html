@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+function contactData() {
+	var text = '{"success":true,"employees":[{"id":"1","firstName":"John","lastName":"Doe","birthday":"1990-05-07","gender":{"male":true,"female":false},"knownLanguage":["English","Japanese","Chinese"]},{"id":"2","firstName":"Lina","lastName":"Art","birthday":"1994-08-05","gender":{"male":false,"female":true},"knownLanguage":["English","Japanese"]}]}';		
+				
+	var obj = JSON.parse(text);
+	for (i = 0; i < obj.employees.length; i++) {
+		if(obj.employees[i].id == document.getElementById("id").value){
+			document.getElementById("id").value = obj.employees[i].id;
+			document.getElementById("firstName").value = obj.employees[i].firstName;
+			document.getElementById("lastName").value = obj.employees[i].lastName;
+			document.getElementById("birthday").value = obj.employees[i].birthday;
+			if(obj.employees[i].gender["male"]){
+				document.getElementById("male").checked = true;
+			}
+			if(obj.employees[i].gender["female"]){
+				document.getElementById("female").checked = true;
+			}
+			for (var a = 0;a < obj.employees[i].knownLanguage.length; a++) {
+				//var li = document.createElement('li');
+				//li.innerHTML = obj.employees[i].knownLanguage[a];
+				//document.getElementById("language").appendChild(li);
+				if(obj.employees[i].knownLanguage[a] == "English"){
+					document.getElementById("english").checked = true;
+				}
+				if(obj.employees[i].knownLanguage[a] == "Japanese"){
+					document.getElementById("japanese").checked = true;
+				}
+				if(obj.employees[i].knownLanguage[a] == "Chinese"){
+					document.getElementById("chinese").checked = true;
+				}
+				
+			}
+		}
+	}
+}	
+</script>
+
+<table>
+	<tr>
+		<td colspan="2">
+			<h3>Contact Form</h3>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>ID</label>
+		</td>
+		<td>
+			<input type="text" id="id" value="">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>First Name</label>
+		</td>
+		<td>
+			<input type="text" id="firstName" value="">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>Last Name</label>
+		</td>
+		<td>
+			<input type="text" id="lastName" value="">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>Birthdate</label>
+		</td>
+		<td>
+			<input type="date" id="birthday" value="">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>Gender</label>
+		</td>
+		<td>
+			<input type="radio" id="male" value="male">
+			<label for="male">Male</label><br>
+			<input type="radio" id="female" value="female">
+			<label for="female">Female</label><br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>Language</label>
+		</td>
+		<td>
+			<input type="checkbox" id="english" name="language1" value="English">
+			<label for="language1"> English</label><br>
+			<input type="checkbox" id="japanese" name="language2" value="Japanese">
+			<label for="language2"> Japanese</label><br>
+			<input type="checkbox" id="chinese" name="language3" value="Chinese">
+			<label for="language3"> Chinese</label><br>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<button type="button" onclick="contactData();">Click Me!</button>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

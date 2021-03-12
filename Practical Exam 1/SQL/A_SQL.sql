@@ -1,0 +1,1 @@
+SELECT A.* FROM employees AS A INNER JOIN salary AS B ON A.salary_id = B.id WHERE B.salary = (SELECT MAX(salary) AS salary FROM salary)

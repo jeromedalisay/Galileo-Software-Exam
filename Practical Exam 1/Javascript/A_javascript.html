@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+var str = 'TheQuickBrownFoxJumpsOverTheLazyDog';
+var result = '';
+for (let c of str) {
+  if(c == c.toUpperCase()){
+    result += " " + c;
+  }
+  else{
+  	result += c;
+  }  
+}
+document.write(result.trim());
+</script>
+
+
+</body>
+</html>
